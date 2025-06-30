@@ -30,7 +30,7 @@ Crypto Arbitrage Finder is an asynchronous Python application that detects arbit
 
 1. Клонируйте репозиторий  
    ```bash
-   git clone https://github.com/your-username/crypto-arbitrage-finder.git
+   git clone https://github.com/joliks/crypto-arbitrage-finder.git
    cd crypto-arbitrage-finder
 2. Создайте и активируйте виртуальное окружение
 
@@ -38,7 +38,8 @@ bash
 python3 -m venv .venv
 source .venv/bin/activate
 
-Установите зависимости
-3. pip install -r requirements.txt
+3.Установите зависимости
+ 
+ pip install -r requirements.txt
 
 
