@@ -1,0 +1,34 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Crypto Arbitrage Finder</title>
+  <link rel="stylesheet" href="/static/main.css"/>
+</head>
+<body>
+  <h1>Crypto Arbitrage Finder</h1>
+  <input id="symbols" placeholder="BTCUSDT,ETHUSDT" size="30"/>
+  <button onclick="runArb()">Find Arbitrage</button>
+  <pre id="output"></pre>
+
+  <script>
+    async function runArb() {
+      const symbols = document.getElementById("symbols").value;
+      const out = document.getElementById("output");
+      out.textContent = "Loading…";
+      try {
+        const res = await fetch(`/api/arbitrage?symbols=${encodeURIComponent(symbols)}`);
+        const data = await res.json();
+        let txt = "";
+        for (const [sym, profit] of Object.entries(data)) {
+          txt += `${sym}: ${profit}%\n`;
+        }
+        out.textContent = txt || "No symbols";
+      } catch (err) {
+        out.textContent = "Error: " + err;
+      }
+    }
+  </script>
+</body>
+</html>
